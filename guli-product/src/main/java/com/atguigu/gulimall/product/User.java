@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.atguigu.gulimall.guliproduct.demos.web;
+package com.atguigu.gulimall.product;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>

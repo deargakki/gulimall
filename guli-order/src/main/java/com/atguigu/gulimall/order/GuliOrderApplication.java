@@ -1,13 +1,13 @@
-package com.atguigu.gulimall.gulicoupon;
+package com.atguigu.gulimall.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GuliCouponApplication {
+public class GuliOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GuliCouponApplication.class, args);
+        SpringApplication.run(GuliOrderApplication.class, args);
     }
 
 }

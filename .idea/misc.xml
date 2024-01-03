@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/guli-member/pom.xml" />
         <option value="$PROJECT_DIR$/guli-order/pom.xml" />
         <option value="$PROJECT_DIR$/guli-ware/pom.xml" />
+        <option value="$PROJECT_DIR$/guli-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/guli-common/pom.xml" />
       </list>
     </option>
   </component>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.atguigu.gulimall.guliproduct.demos.web;
+package com.atguigu.gulimall.product;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
