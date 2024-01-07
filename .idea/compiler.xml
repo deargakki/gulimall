@@ -14,6 +14,7 @@
         <module name="renren-fast" />
         <module name="guli-common" />
         <module name="guli-ware" />
+        <module name="guli-third-party" />
         <module name="renren-generator" />
       </profile>
     </annotationProcessing>
