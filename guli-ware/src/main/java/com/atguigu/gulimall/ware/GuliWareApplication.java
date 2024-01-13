@@ -1,19 +1,21 @@
-package com.atguigu.gulimall.product;
+package com.atguigu.gulimall.ware;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@EnableTransactionManagement
+@MapperScan("com.atguigu.gulimall.ware.dao")
 @EnableDiscoveryClient
-@MapperScan("com.atguigu.gulimall.product.dao")
-@EnableFeignClients("com.atguigu.gulimall.product.feign")
+@EnableFeignClients("com.atguigu.gulimall.ware.feign")
 @SpringBootApplication
-public class GuliProductApplication {
+public class GuliWareApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GuliProductApplication.class, args);
+        SpringApplication.run(GuliWareApplication.class, args);
     }
 
 }

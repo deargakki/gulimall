@@ -71,7 +71,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.atguigu.gulimall.order.GuliOrderApplication</mainClass>
+                    <mainClass>com.atguigu.gulimall.member.GuliOrderApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>

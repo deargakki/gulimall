@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/guli-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/guli-common/pom.xml" />
         <option value="$PROJECT_DIR$/guli-third-party/pom.xml" />
+        <option value="$PROJECT_DIR$/guli-search/pom.xml" />
       </list>
     </option>
   </component>
