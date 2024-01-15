@@ -3,7 +3,7 @@ spring:
     username: root
     password: 123
     url: jdbc:mysql://192.168.21.132:3306/gulimall_pms?useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       discovery:
@@ -12,6 +12,12 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: gulimall-product
+  thymeleaf:
+    cache: false
+  web:
+    resources:
+      static-locations: templates/,classpath:static/
+
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   global-config:
