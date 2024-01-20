@@ -100,7 +100,7 @@ spring:
         - id: gulimall_host
           uri: lb://gulimall-product
           predicates:
-            - Host=**.gulimall.com
+            - Host=gulimall.com,item.gulimall.com
 #    sentinel:
 #      transport:
 #        dashboard: localhost:8080

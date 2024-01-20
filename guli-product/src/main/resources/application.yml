@@ -17,6 +17,9 @@ spring:
   web:
     resources:
       static-locations: templates/,classpath:static/
+  redis:
+    host: 192.168.21.132
+    port: 6379
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -30,4 +33,4 @@ server:
   port: 10000
 logging:
   level:
-    root: debug
+    root: error

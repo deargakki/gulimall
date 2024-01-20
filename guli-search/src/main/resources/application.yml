@@ -1,3 +1,8 @@
 spring:
   elasticsearch:
     uris: http://192.168.21.132:9200
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.21.132
+    port: 6379

@@ -14,6 +14,8 @@
         <option value="$PROJECT_DIR$/guli-common/pom.xml" />
         <option value="$PROJECT_DIR$/guli-third-party/pom.xml" />
         <option value="$PROJECT_DIR$/guli-search/pom.xml" />
+        <option value="$PROJECT_DIR$/guli-auth-server/pom.xml" />
+        <option value="$PROJECT_DIR$/guli-cart/pom.xml" />
       </list>
     </option>
   </component>
