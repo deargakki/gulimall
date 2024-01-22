@@ -721,7 +721,7 @@
         <p class="qian_y">
             <span th:text="${orderConfirmData.count}">1</span>
             <span>件商品，总商品金额：</span>
-            <span class="rmb" th:text="${orderConfirmData.total}">￥28.90</span>
+            <span class="rmb" th:text="${#numbers.formatDecimal(orderConfirmData.total,1,2)}">￥28.90</span>
         </p>
         <p class="qian_y">
             <span>返现：</span>
@@ -743,7 +743,7 @@
     </div>
 
     <div class="yfze">
-        <p class="yfze_a"><span class="z">应付总额：</span><span class="hq"> $ <b id="payPriceEle">[[${#numbers.formatDecimal(orderConfirmData.payPrice,1,2)}]]</b></span>
+        <p class="yfze_a"><span class="z">应付总额：</span><span class="hq"> ￥ <b id="payPriceEle">[[${#numbers.formatDecimal(orderConfirmData.payPrice,1,2)}]]</b></span>
         </p>
         <p class="yfze_b">寄送至：<span id="receiveAddressEle"></span> 收货人： <span id="receiveEle"></span></p>
     </div>
@@ -1010,18 +1010,19 @@
     function getFare(addrId) {
         //给表单回填选择的地址
         $("#addIdInput").val(addrId);
-        $.get("http://gulimall.com/api/ware/wareinfo/fare?addrId=" + addrId, function (data) {
+        $.get("http://gulimall.com/api/ware/wareinfo/fare/" + addrId, function (data) {
             console.log(data)
-            $("#fareEle").text(data.data.fare);
+            // $("#fareEle").text(data.data.fare);
+            $("#fareEle").text(data.fare);
             var total = [[${orderConfirmData.total}]];
             // 设置运费
-            let number = total * 1 + data.data.fare * 1;
+            let number = total * 1 + data.fare * 1;
             $("#payPriceEle").text(number)
             // 应付总额
             $("#payPriceInput").val(number)
             // 设置收货人
-            $("#receiveAddressEle").text(data.data.address.province + " " + data.data.address.city + " " + data.data.address.region + " " + data.data.address.detailAddress)
-            $("#receiveEle").text(data.data.address.name);
+            $("#receiveAddressEle").text(data.address.province + " " + data.address.city + " " + data.address.region + " " + data.address.detailAddress)
+            $("#receiveEle").text(data.address.name);
         })
     }
 </script>

@@ -4,20 +4,29 @@ package com.atguigu.gulimall.cart.controller;
 import com.atguigu.gulimall.cart.service.CartService;
 import com.atguigu.gulimall.cart.vo.Cart;
 import com.atguigu.gulimall.cart.vo.CartItem;
+import com.atguigu.gulimall.cart.vo.CartItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Controller
 public class CartController {
     @Autowired
     CartService cartService;
+
+    @GetMapping("/currentUserCartItems")
+    @ResponseBody
+    public List<CartItem> getCurrentUserCartItems(){
+        return cartService.getUserCartItems();
+    }
 
     /**
      * 浏览器有一个cookie：user-key:标识用户身份  一个月过期
@@ -95,5 +104,12 @@ public class CartController {
 
         cartService.deleteItem(skuId);
         return "redirect:http://cart.gulimall.com/cart.html";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/getCheckedItems")
+    public List<CartItemVo> getCheckedItems() {
+        return cartService.getCheckedItems();
     }
 }

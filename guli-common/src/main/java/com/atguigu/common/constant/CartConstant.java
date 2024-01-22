@@ -12,4 +12,7 @@ public class CartConstant {
 
     //cookie过期时间 一个月
     public static final int TEMP_USER_COOKIE_TIMEOUT = 60*60*24*30;
+
+    public final static String CART_PREFIX = "gulimall:cart:";
+
 }

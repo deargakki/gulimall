@@ -4,20 +4,19 @@ package com.atguigu.gulimall.cart.service.impl;
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.atguigu.common.constant.CartConstant;
 import com.atguigu.common.utils.R;
 import com.atguigu.gulimall.cart.feign.ProductFeignService;
 import com.atguigu.gulimall.cart.interceptor.CartInterceptor;
 import com.atguigu.gulimall.cart.service.CartService;
-import com.atguigu.gulimall.cart.vo.Cart;
-import com.atguigu.gulimall.cart.vo.CartItem;
-import com.atguigu.gulimall.cart.vo.SkuInfoVo;
-import com.atguigu.gulimall.cart.vo.UserInfoTo;
+import com.atguigu.gulimall.cart.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -197,6 +196,47 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<CartItem> getUserCartItems() {
+
+        UserInfoTo userInfoTo = CartInterceptor.threadLocal.get();
+        if (userInfoTo.getUserId() == null) {
+            //没登录
+            return null;
+        } else {
+            //登录了
+            String cartKey = CART_PREFIX + userInfoTo.getUserId();
+            List<CartItem> cartItemList = getCartItems(cartKey);
+            //筛选被选中的购物项 过滤数据
+            List<CartItem> collect = cartItemList.stream()
+                    .filter(item -> item.getCheck())
+                    .map((item) -> {
+                        //一定要获取到最新的价格
+                        R r = productFeignService.getPrice(item.getSkuId());
+                        String data = (String) r.get("data");
+                        item.setPrice(new BigDecimal(data));
+                        return item;
+                    }).collect(Collectors.toList());
+            return collect;
+        }
+    }
+
+    @Override
+    public List<CartItemVo> getCheckedItems() {
+        UserInfoTo userInfoTo = CartInterceptor.threadLocal.get();
+        List<CartItemVo> cartByKey = getCartByKey(userInfoTo.getUserId().toString());
+        return cartByKey.stream().filter(CartItemVo::getCheck).collect(Collectors.toList());
+    }
+
+    private List<CartItemVo> getCartByKey(String userKey) {
+        BoundHashOperations<String, Object, Object> ops = redisTemplate.boundHashOps(CartConstant.CART_PREFIX+userKey);
+
+        List<Object> values = ops.values();
+        if (values != null && values.size() > 0) {
+            List<CartItemVo> cartItemVos = values.stream().map(obj -> {
+                String json = (String) obj;
+                return JSON.parseObject(json, CartItemVo.class);
+            }).collect(Collectors.toList());
+            return cartItemVos;
+        }
         return null;
     }
 

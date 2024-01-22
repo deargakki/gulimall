@@ -42,7 +42,7 @@ spring:
             - RewritePath=/api/(?<segment>/?.*),/$\{segment}
 #
 #        #将路径为Path=/api/ware/**转发至仓库服务
-        - id: gulimall-ware
+        - id: ware_route
           uri: lb://gulimall-ware
           predicates:
             - Path=/api/ware/**
