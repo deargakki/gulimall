@@ -2,7 +2,6 @@ package com.atguigu.gulimall.order.feign;
 
 import com.atguigu.common.utils.R;
 import com.atguigu.gulimall.order.vo.FareVo;
-import com.atguigu.gulimall.order.vo.SkuHasStockVo;
 import com.atguigu.gulimall.order.vo.WareSkuLockVo;
 
 import org.springframework.cloud.openfeign.FeignClient;

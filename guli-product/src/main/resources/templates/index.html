@@ -102,7 +102,7 @@
         </li>
         <span>|</span>
         <li>
-          <a href="http://order.gulimall.com/center/list.html">我的订单</a>
+          <a href="http://member.gulimall.com/memberOrder.html">我的订单</a>
         </li>
 
       </ul>
@@ -585,15 +585,15 @@
     return false;
   }
   // 获取秒杀商品信息
-  $.get("http://seckill.gulimall.com/seckill/current", function (res){
+  $.get("http://seckill.gulimall.com/currentSeckillSkus", function (res){
     var seckillItems = res.data;
     if (seckillItems.length > 0) {
       seckillItems.forEach(function (item){
         let tagLi = $("<li></li>")
-                .append($("<img style='width:130px; height: 130px' src='"+item.skuInfo.skuDefaultImg+"'/>"))
-                .append($("<p style='height: auto;'>"+item.skuInfo.skuTitle+"</p>"))
+                .append($("<img style='width:130px; height: 130px' src='"+item.skuInfoVo.skuDefaultImg+"'/>"))
+                .append($("<p style='height: auto;'>"+item.skuInfoVo.skuTitle+"</p>"))
                 .append($("<span>￥"+item.seckillPrice+"</span>"))
-                .append($("<s>￥"+item.skuInfo.price+"</s>"));
+                .append($("<s>￥"+item.skuInfoVo.price+"</s>"));
         $(tagLi).appendTo("#seckillSkuContent")
         $(tagLi).click(function (){
           location.href="http://item.gulimall.com/" + item.skuId + ".html";

@@ -4,9 +4,7 @@ import com.atguigu.gulimall.product.entity.SkuImagesEntity;
 import com.atguigu.gulimall.product.entity.SkuInfoEntity;
 import com.atguigu.gulimall.product.entity.SpuInfoDescEntity;
 import lombok.Data;
-import lombok.ToString;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,6 +35,6 @@ public class SkuItemVo {
     private List<SpuItemAttrGroupVo> groupAttrs;
 
     //6 当前商品秒杀的优惠信息
-    private SeckillSkuInfoVo seckillSkuInfoVo;
+    private SeckillSkuVo seckillSkuVo;
 
 }

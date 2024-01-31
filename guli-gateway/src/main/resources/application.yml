@@ -101,6 +101,12 @@ spring:
           uri: lb://gulimall-product
           predicates:
             - Host=gulimall.com,item.gulimall.com
+
+#        #将主机地址为seckill.gulimall.com转发至gulimall-seckill
+        - id: gulimall_member_route
+          uri: lb://gulimall-member
+          predicates:
+            - Host=member.gulimall.com
 #    sentinel:
 #      transport:
 #        dashboard: localhost:8080

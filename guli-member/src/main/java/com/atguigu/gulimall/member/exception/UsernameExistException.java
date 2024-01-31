@@ -1,4 +1,4 @@
-package com.atguigu.gulimall.order.exception;
+package com.atguigu.gulimall.member.exception;
 
 /**
  * @author 孟享广

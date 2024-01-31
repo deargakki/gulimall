@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @description
  */
 @Data
-public class SeckillSkuInfoVo {
+public class SeckillSkuVo {
 
 
     /**

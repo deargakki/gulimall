@@ -1,4 +1,4 @@
-package com.atguigu.gulimall.order.feign;
+package com.atguigu.gulimall.member.feign;
 
 import com.atguigu.common.utils.R;
 import org.springframework.cloud.openfeign.FeignClient;

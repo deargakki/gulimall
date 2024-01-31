@@ -1,4 +1,4 @@
-package com.atguigu.gulimall.order.vo;
+package com.atguigu.gulimall.member.vo;
 
 import lombok.Data;
 import lombok.ToString;

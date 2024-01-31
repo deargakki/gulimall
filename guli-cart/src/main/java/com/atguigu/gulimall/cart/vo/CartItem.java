@@ -37,6 +37,7 @@ public class CartItem {
         this.skuId = skuId;
     }
 
+    //是否被选中
     public Boolean getCheck() {
         return check;
     }

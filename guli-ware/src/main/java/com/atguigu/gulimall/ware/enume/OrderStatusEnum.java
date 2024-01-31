@@ -1,4 +1,4 @@
-package com.atguigu.gulimall.ware;
+package com.atguigu.gulimall.ware.enume;
 
 public enum OrderStatusEnum {
 

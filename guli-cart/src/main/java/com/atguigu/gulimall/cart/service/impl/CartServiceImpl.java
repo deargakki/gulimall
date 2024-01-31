@@ -205,7 +205,7 @@ public class CartServiceImpl implements CartService {
             //登录了
             String cartKey = CART_PREFIX + userInfoTo.getUserId();
             List<CartItem> cartItemList = getCartItems(cartKey);
-            //筛选被选中的购物项 过滤数据
+            //通过getCheck()筛选被选中的购物项 过滤数据
             List<CartItem> collect = cartItemList.stream()
                     .filter(item -> item.getCheck())
                     .map((item) -> {
